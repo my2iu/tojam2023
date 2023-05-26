@@ -1,13 +1,31 @@
  class @ { HTML element } extends @ {wrapped js object } {
  vardecls {
  }
+ function . {inner HTML: { . {html } @ {string } } } { @ {void } } { } {
+ . {js object } . {set: {"innerHTML" }to: { @ {JS object } . {from string: { . {html } } } } }
+ }
+ function . {on event: { . {event type } @ {string } }add listener: { . {handler } f@ {on: { . {event } @ {HTML event } } } returns @ {void } } } { @ {void } } { } {
+ . {js object } . {call: {"addEventListener" }with: { @ {JS object } . {from string: { . {event type } } } }and: { @ {JS object } . {from function: { lambda { f@ {on: { . {event } @ {JS object } } } returns @ {void } } {
+ . {handler } . {on: { @ {HTML event } . {wrap: { . {event } } } } }
+ } } } } }
+ }
+ function . {query selector: { . {query } @ {string } } } { @ {HTML element } } { } {
+ var . {value } @ {JS object } := . {js object } . {call: {"querySelector" }with: { @ {JS object } . {from string: { . {query } } } } }
+ return @ {HTML element } . {wrap: { . {value } } }
+ }
  function . {text content: { . {text } @ {string } } } { @ {void } } { } {
  . {js object } . {set: {"textContent" }to: { @ {JS object } . {from string: { . {text } } } } }
  }
- constructor . {wrap: { . {js obj } @ {JS object } } } { } {
+ constructor . {force wrap: { . {js obj } @ {JS object } } } { } {
  super . {wrap: { . {js obj } } }
  }
  classfunction . {document } { @ {HTML element } } { } {
  return @ {HTML element } . {wrap: { @ {JS object } . {globals } . {get: {"document" } } } }
+ }
+ classfunction . {wrap: { . {js } @ {JS object } } } { @ {HTML element } } { } {
+ if { . {js } = null } {
+ return null
+ }
+ return @ {HTML element } . {force wrap: { . {js } } }
  }
  }

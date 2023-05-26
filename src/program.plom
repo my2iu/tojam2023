@@ -4,8 +4,11 @@
  function . {main } { @ {void } } { } {
 
 
- @ {wrapped js object } . {wrap: { @ {JS object } . {globals } } }
- . {print: {"ok" } }
- . {print: {"Hello!" } }
+ @ {HTML element } . {document } . {query selector: {"body" } } . {on event: {"click" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
+ . {event } . {prevent default }
+ . {print: {"clicked" } }
+
+ } } }
+ . {print: {"hello" } }
  }
  }

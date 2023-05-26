@@ -1,0 +1,16 @@
+ class @ { HTML event } extends @ {wrapped js object } {
+ vardecls {
+ }
+ function . {prevent default } { @ {void } } { } {
+ . {js object } . {call: {"preventDefault" } }
+ }
+ constructor . {force wrap: { . {js } @ {JS object } } } { } {
+ super . {wrap: { . {js } } }
+ }
+ classfunction . {wrap: { . {js } @ {JS object } } } { @ {HTML event } } { } {
+ if { . {js } = null } {
+ return null
+ }
+ return @ {HTML event } . {force wrap: { . {js } } }
+ }
+ }

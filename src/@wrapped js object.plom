@@ -6,6 +6,7 @@
  return . {js object }
  }
  constructor . {wrap: { . {js } @ {JS object } } } { } {
+ super . {new }
  . {js object } := . {js }
  }
  }
