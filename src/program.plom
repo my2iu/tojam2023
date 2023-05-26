@@ -1,4 +1,11 @@
  module .{program} {
  vardecls {
  }
+ function . {main } { @ {void } } { } {
+
+
+ @ {wrapped js object } . {wrap: { @ {JS object } . {globals } } }
+ . {print: {"ok" } }
+ . {print: {"Hello!" } }
+ }
  }

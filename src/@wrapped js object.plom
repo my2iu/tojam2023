@@ -1,0 +1,11 @@
+ class @ { wrapped js object } extends @ {object } {
+ vardecls {
+ var . {js object } @ {JS object }
+ }
+ function . {unwrap } { @ {JS object } } { } {
+ return . {js object }
+ }
+ constructor . {wrap: { . {js } @ {JS object } } } { } {
+ . {js object } := . {js }
+ }
+ }

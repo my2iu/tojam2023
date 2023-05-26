@@ -1,0 +1,13 @@
+ class @ { HTML element } extends @ {wrapped js object } {
+ vardecls {
+ }
+ function . {text content: { . {text } @ {string } } } { @ {void } } { } {
+ . {js object } . {set: {"textContent" }to: { @ {JS object } . {from string: { . {text } } } } }
+ }
+ constructor . {wrap: { . {js obj } @ {JS object } } } { } {
+ super . {wrap: { . {js obj } } }
+ }
+ classfunction . {document } { @ {HTML element } } { } {
+ return @ {HTML element } . {wrap: { @ {JS object } . {globals } . {get: {"document" } } } }
+ }
+ }
