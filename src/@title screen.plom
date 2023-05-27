@@ -10,10 +10,11 @@
 
  }
  function . {start } { @ {void } } { } {
+ . {ctx } . {draw image: { . {loading image } }x: { 0 }y: { 0 } }
 
  var . {title image } @ {image } := @ {image } . {from: {"Title screen.jpg" } }
  . {title image } . {load promise } . {then: { lambda { f@ {run with: { . {value } @ {JS object } } } returns @ {object } } {
- . {canvas } . {2D context } . {draw image: { . {title image } }x: { 0 }y: { 0 } }
+ . {ctx } . {draw image: { . {title image } }x: { 0 }y: { 0 } }
  . {game manager } . {switch to: { @ {game screen } . {new } } }
  return null
  } } }

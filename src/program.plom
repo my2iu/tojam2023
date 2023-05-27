@@ -3,18 +3,23 @@
  var . {canvas } @ {canvas }
  var . {ctx } @ {canvas 2D context }
  var . {game manager } @ {game manager }
+ var . {loading image } @ {image }
  }
  function . {main } { @ {void } } { } {
 
  . {canvas } := @ {canvas } . {rewrap: { @ {HTML element } . {document } . {query selector: {"#main canvas" } } } }
  . {ctx } := . {canvas } . {2D context }
 
-
-
-
  . {game manager } := @ {game manager } . {new }
+ . {loading image } := @ {image } . {from: {"Loading.jpg" } }
+ . {loading image } . {load promise } . {then: { lambda { f@ {run with: { . {alue } @ {JS object } } } returns @ {object } } {
  var . {title screen } @ {title screen } := @ {title screen } . {new }
  . {game manager } . {switch to: { . {title screen } } }
+ } } }
+
+
+
+
 
  var . {pointer down ID } @ {number }
  var . {last down x } @ {number }

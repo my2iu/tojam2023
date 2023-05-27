@@ -22,7 +22,6 @@
 
  }
  . {current screen } := . {screen }
-
  . {current screen } . {game manager: { this } }
  . {current screen } . {start }
  . {current screen } . {run }
