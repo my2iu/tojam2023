@@ -7,13 +7,13 @@
  constructor . {force wrap: { . {js } @ {JS object } } } { } {
  super . {force wrap: { . {js } } }
  }
- classfunction . {rewrap: { . {wrapped } @ {wrapped js object } } } { @ {Canvas } } { } {
+ classfunction . {rewrap: { . {wrapped } @ {wrapped js object } } } { @ {canvas } } { } {
  if { . {wrapped } = null } {
  return null
  }
  return @ {canvas } . {wrap: { . {wrapped } . {unwrap } } }
  }
- classfunction . {wrap: { . {js } @ {JS object } } } { @ {Canvas } } { } {
+ classfunction . {wrap: { . {js } @ {JS object } } } { @ {canvas } } { } {
  if { . {js } = null } {
  return null
  }

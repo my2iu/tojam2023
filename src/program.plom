@@ -1,6 +1,6 @@
  module .{program} {
  vardecls {
- var . {canvas } @ {Canvas }
+ var . {canvas } @ {canvas }
  }
  function . {main } { @ {void } } { } {
 
@@ -14,7 +14,7 @@
 
 
  @ {JS object } . {globals } . {call: {"setTimeout" }with: { @ {JS object } . {from function: { lambda { f@ {trigger } returns @ {void } } {
- . {canvas }
+ . {canvas } . {2D context } . {draw image: { . {title image } }x: { 50 }y: { 100 } }
  } } } }and: { @ {JS object } . {from number: { 5000 } } } }
  . {print: {"hello" } }
  }
