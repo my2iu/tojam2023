@@ -3,6 +3,12 @@
  }
  function . {start } { @ {void } } { } {
  . {print: {"in title start" } }
+ var . {title image } @ {image } := @ {image } . {from: {"temptitle.jpg" } }
+
+
+ @ {JS object } . {globals } . {call: {"setTimeout" }with: { @ {JS object } . {from function: { lambda { f@ {trigger } returns @ {void } } {
+ . {canvas } . {2D context } . {draw image: { . {title image } }x: { 50 }y: { 100 } }
+ } } } }and: { @ {JS object } . {from number: { 5000 } } } }
  }
  constructor . {new } { } {
  super . {new }
