@@ -1,6 +1,15 @@
  class @ { HTML event } extends @ {wrapped js object } {
  vardecls {
  }
+ function . {offset x } { @ {number } } { } {
+ return . {js object } . {get: {"offsetX" } } . {as number }
+ }
+ function . {offset y } { @ {number } } { } {
+ return . {js object } . {get: {"offsetY" } } . {as number }
+ }
+ function . {pointer ID } { @ {number } } { } {
+ return . {js object } . {get: {"pointerId" } } . {as number }
+ }
  function . {prevent default } { @ {void } } { } {
  . {js object } . {call: {"preventDefault" } }
  }

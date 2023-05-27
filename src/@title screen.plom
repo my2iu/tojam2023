@@ -5,6 +5,9 @@
  . {print: {"close 1" } }
  super . {close }
  }
+ function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {print: {"title click" } }
+ }
  function . {start } { @ {void } } { } {
 
  var . {title image } @ {image } := @ {image } . {from: {"Title screen.jpg" } }

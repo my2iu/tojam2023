@@ -2,6 +2,12 @@
  vardecls {
  var . {current screen } @ {game screen }
  }
+ function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {current screen } . {pointer down at x: { . {x } }y: { . {y } } }
+ }
+ function . {pointer up at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {current screen } . {pointer up at x: { . {x } }y: { . {y } } }
+ }
  function . {switch to: { . {screen } @ {game screen } } } { @ {void } } { } {
  if { . {current screen } != null } {
  . {current screen } . {close }

@@ -8,6 +8,10 @@
  function . {game manager: { . {manager } @ {game manager } } } { @ {void } } { } {
  . {game manager } := . {manager }
  }
+ function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ }
+ function . {pointer up at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ }
  function . {run } { @ {void } } { } {
  }
  function . {start } { @ {void } } { } {

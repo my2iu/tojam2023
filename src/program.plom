@@ -9,16 +9,24 @@
  . {canvas } := @ {canvas } . {rewrap: { @ {HTML element } . {document } . {query selector: {"#main canvas" } } } }
  . {ctx } := . {canvas } . {2D context }
 
- . {canvas } . {on event: {"pointer down" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
- . {event } . {prevent default }
- . {print: {"clicked" } }
 
- } } }
 
 
  . {game manager } := @ {game manager } . {new }
  var . {title screen } @ {title screen } := @ {title screen } . {new }
  . {game manager } . {switch to: { . {title screen } } }
+
+ var . {pointer down ID } @ {number }
+ . {canvas } . {on event: {"pointerdown" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
+ . {event } . {prevent default }
+ . {pointer down ID } := . {event } . {pointer ID }
+ . {game manager } . {pointer down at x: { . {event } . {offset x } }y: { . {event } . {offset y } } }
+ } } }
+ . {canvas } . {on event: {"pointerup" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
+ . {event } . {prevent default }
+ . {pointer down ID } := . {event } . {pointer ID }
+
+ } } }
 
 
 
