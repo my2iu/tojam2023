@@ -2,11 +2,12 @@
  vardecls {
  }
  function . {close } { @ {void } } { } {
- . {print: {"close 1" } }
- super . {close }
+
  }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
- . {print: {"title click" } }
+ var . {new screen } @ {play screen } := @ {play screen } . {new }
+ . {game manager } . {switch to: { . {new screen } } }
+
  }
  function . {start } { @ {void } } { } {
 

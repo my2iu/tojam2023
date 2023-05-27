@@ -17,6 +17,8 @@
  . {game manager } . {switch to: { . {title screen } } }
 
  var . {pointer down ID } @ {number }
+ var . {last down x } @ {number }
+ var . {last down y } @ {number }
  . {canvas } . {on event: {"pointerdown" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
  . {event } . {prevent default }
  . {pointer down ID } := . {event } . {pointer ID }
@@ -24,10 +26,17 @@
  } } }
  . {canvas } . {on event: {"pointerup" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
  . {event } . {prevent default }
- . {pointer down ID } := . {event } . {pointer ID }
+ if { . {event } . {pointer ID } = . {pointer down ID } } {
+ . {pointer down ID } := null
+ . {game manager } . {pointer up at x: { . {event } . {offset x } }y: { . {event } . {offset y } } }
+ }
 
  } } }
-
+ . {canvas } . {on event: {"pointermove" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
+ . {event } . {prevent default }
+ var . {is down } @ {boolean } := . {pointer down ID } = . {event } . {pointer ID }
+ . {game manager } . {pointer move at x: { . {event } . {offset x } }y: { . {event } . {offset y } }is down: { . {is down } } }
+ } } }
 
 
  }
