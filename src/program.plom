@@ -1,11 +1,21 @@
  module .{program} {
  vardecls {
  var . {canvas } @ {canvas }
+ var . {ctx } @ {canvas 2D context }
  var . {game manager } @ {game manager }
  }
  function . {main } { @ {void } } { } {
+ var . {array } @ {array } := @ {array } . {new }
+ . {print: { . {array } . {size } } }
+ . {array } . {+=: {"hello" } }
+ . {print: { . {array } . {size } } }
+ . {array } . {+=: { 25 } } . {+=: {"third" } }
+ . {print: { . {array } . {size } } }
+ . {print: { . {array } . {at: { 1 } } } }
+ . {print: { . {array } . {at: { 2 } } } }
 
  . {canvas } := @ {canvas } . {rewrap: { @ {HTML element } . {document } . {query selector: {"#main canvas" } } } }
+ . {ctx } := . {canvas } . {2D context }
  . {canvas } . {on event: {"click" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
  . {event } . {prevent default }
  . {print: {"clicked" } }
@@ -14,12 +24,15 @@
 
  . {game manager } := @ {game manager } . {new }
  var . {title screen } @ {title screen } := @ {title screen } . {new }
- . {game manager } . {switch to: { . {title screen } } }
+
 
 
 
  }
  function . {misc } { @ {void } } { } {
+ . {game manager } . {switch to: { . {title screen } } }
+
+
  @ {JS object } . {globals } . {call: {"setTimeout" }with: { @ {JS object } . {from function: { lambda { f@ {trigger } returns @ {void } } {
  . {canvas } . {2D context } . {draw image: { . {title image } }x: { 50 }y: { 100 } }
  } } } }and: { @ {JS object } . {from number: { 1000 } } } }

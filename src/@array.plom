@@ -1,0 +1,23 @@
+ class @ { array } extends @ {object } {
+ vardecls {
+ var . {native } @ {JS object }
+ }
+ function . {+=: { . {value } @ {object } } } { @ {array } } { } {
+ . {native } . {call: {"push" }with: { . {value } } }
+ return this
+ }
+ function . {at: { . {index } @ {number } } } { @ {object } } { } {
+ return . {native } . {call: {"at" }with: { @ {JS object } . {from number: { . {index } } } } }
+
+ }
+ function . {size } { @ {number } } { } {
+ return . {native } . {get: {"length" } } . {as number }
+ }
+ function . {to string } { @ {string } } { } {
+ return . {native } . {to string }
+ }
+ constructor . {new } { } {
+ super . {new }
+ . {native } := @ {JS object } . {globals } . {new: {"Array" } }
+ }
+ }
