@@ -3,6 +3,7 @@
  var . {game manager } @ {game manager }
  }
  function . {close } { @ {void } } { } {
+
  }
  function . {game manager: { . {manager } @ {game manager } } } { @ {void } } { } {
  . {game manager } := . {manager }

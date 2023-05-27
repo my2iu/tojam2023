@@ -1,11 +1,16 @@
  class @ { title screen } extends @ {game screen } {
  vardecls {
  }
+ function . {close } { @ {void } } { } {
+ . {print: {"close 1" } }
+ super . {close }
+ }
  function . {start } { @ {void } } { } {
 
- var . {title image } @ {image } := @ {image } . {from: {"temptitle.jpg" } }
- . {title image } . {load promise } . {then: { lambda { f@ {run with: { . {alue } @ {JS object } } } returns @ {object } } {
- . {canvas } . {2D context } . {draw image: { . {title image } }x: { 50 }y: { 100 } }
+ var . {title image } @ {image } := @ {image } . {from: {"Title screen.jpg" } }
+ . {title image } . {load promise } . {then: { lambda { f@ {run with: { . {value } @ {JS object } } } returns @ {object } } {
+ . {canvas } . {2D context } . {draw image: { . {title image } }x: { 0 }y: { 0 } }
+ . {game manager } . {switch to: { @ {game screen } . {new } } }
  return null
  } } }
 

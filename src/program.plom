@@ -5,6 +5,28 @@
  var . {game manager } @ {game manager }
  }
  function . {main } { @ {void } } { } {
+
+ . {canvas } := @ {canvas } . {rewrap: { @ {HTML element } . {document } . {query selector: {"#main canvas" } } } }
+ . {ctx } := . {canvas } . {2D context }
+
+ . {canvas } . {on event: {"pointer down" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
+ . {event } . {prevent default }
+ . {print: {"clicked" } }
+
+ } } }
+
+
+ . {game manager } := @ {game manager } . {new }
+ var . {title screen } @ {title screen } := @ {title screen } . {new }
+ . {game manager } . {switch to: { . {title screen } } }
+
+
+
+ }
+ function . {misc } { @ {void } } { } {
+
+
+
  var . {array } @ {array } := @ {array } . {new }
  . {print: { . {array } . {size } } }
  . {array } . {+=: {"hello" } }
@@ -14,23 +36,9 @@
  . {print: { . {array } . {at: { 1 } } } }
  . {print: { . {array } . {at: { 2 } } } }
 
- . {canvas } := @ {canvas } . {rewrap: { @ {HTML element } . {document } . {query selector: {"#main canvas" } } } }
- . {ctx } := . {canvas } . {2D context }
- . {canvas } . {on event: {"click" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
- . {event } . {prevent default }
- . {print: {"clicked" } }
-
- } } }
-
- . {game manager } := @ {game manager } . {new }
- var . {title screen } @ {title screen } := @ {title screen } . {new }
 
 
 
-
- }
- function . {misc } { @ {void } } { } {
- . {game manager } . {switch to: { . {title screen } } }
 
 
  @ {JS object } . {globals } . {call: {"setTimeout" }with: { @ {JS object } . {from function: { lambda { f@ {trigger } returns @ {void } } {
