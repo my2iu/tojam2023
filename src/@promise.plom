@@ -1,0 +1,17 @@
+ class @ { promise } extends @ {wrapped js object } {
+ vardecls {
+ }
+ constructor . {force wrap: { . {js } @ {JS object } } } { } {
+ super . {wrap: { . {js } } }
+ }
+ constructor . {from callbacks: { . {callbacks } f@ {resolve: { . {resolve } f@ {resolve: { . {js } @ {JS object } } } returns @ {void } }reject: { f@ {reject: { . {js } @ {JS object } } } returns @ {void } } } returns @ {void } } } { } {
+ var . {js } := @ {JS object } . {globals } . {new: {"Promise" }with: { } }
+ super . {wrap: { . {js } } }
+ }
+ classfunction . {wrap: { . {js } @ {JS object } } } { @ {promise } } { } {
+ if { . {js } = null } {
+ return null
+ }
+ return @ {promise } . {force wrap: { . {js } } }
+ }
+ }

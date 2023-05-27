@@ -1,0 +1,17 @@
+ class @ { game manager } extends @ {object } {
+ vardecls {
+ var . {current screen } @ {game screen }
+ }
+ function . {switch to: { . {screen } @ {game screen } } } { @ {void } } { } {
+ if { . {current screen } != null } {
+ . {current screen } . {close }
+ }
+ . {current screen } := . {screen }
+ . {current screen } . {game manager: { this } }
+ . {current screen } . {start }
+ . {current screen } . {run }
+ }
+ constructor . {new } { } {
+ super . {new }
+ }
+ }

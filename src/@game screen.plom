@@ -1,0 +1,17 @@
+ class @ { game screen } extends @ {object } {
+ vardecls {
+ var . {game manager } @ {game manager }
+ }
+ function . {close } { @ {void } } { } {
+ }
+ function . {game manager: { . {manager } @ {game manager } } } { @ {void } } { } {
+ . {game manager } := . {manager }
+ }
+ function . {run } { @ {void } } { } {
+ }
+ function . {start } { @ {void } } { } {
+ }
+ constructor . {new } { } {
+ super . {new }
+ }
+ }

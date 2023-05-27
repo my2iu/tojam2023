@@ -1,0 +1,10 @@
+ class @ { title screen } extends @ {game screen } {
+ vardecls {
+ }
+ function . {start } { @ {void } } { } {
+ . {print: {"in title start" } }
+ }
+ constructor . {new } { } {
+ super . {new }
+ }
+ }
