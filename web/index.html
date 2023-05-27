@@ -13,6 +13,12 @@
 			main.repository = makeRepositoryWithStdLib(main);
 			return main;
 		});
+		
+		function imageOnLoadPromise(img) {
+			return new Promise((resolve, reject) => {
+				img.onload = () => {resolve(img)};
+			});
+		}
 	</script>
     <script type="text/javascript" language="javascript" src="main.plom.js"></script>
 	<script>
@@ -20,7 +26,6 @@
 			runPlomStandalone(main);
 			return main;
 		});
-	
 	</script>
 	<style>
 		div#main {

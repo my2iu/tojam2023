@@ -1,10 +1,18 @@
  class @ { image } extends @ {wrapped js object } {
  vardecls {
+ var . {load promise } @ {promise }
+ }
+ function . {load promise } { @ {promise } } { } {
+ return . {load promise }
  }
  constructor . {from: { . {url } @ {string } } } { } {
  var . {js } @ {JS object } := @ {JS object } . {globals } . {new: {"Image" } }
+
+ var . {promise } @ {promise } := @ {promise } . {wrap: { @ {JS object } . {globals } . {call: {"imageOnLoadPromise" }with: { . {js } } } } }
+
  . {js } . {set: {"src" }to: { @ {JS object } . {from string: { . {url } } } } }
 
  super . {wrap: { . {js } } }
+ . {load promise } := . {promise }
  }
  }

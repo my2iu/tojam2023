@@ -1,11 +1,10 @@
  class @ { promise } extends @ {wrapped js object } {
  vardecls {
  }
- constructor . {force wrap: { . {js } @ {JS object } } } { } {
- super . {wrap: { . {js } } }
+ function . {then: { . {then } f@ {run with: { . {value } @ {JS object } } } returns @ {object } } } { @ {promise } } { } {
+ @ {promise } . {wrap: { this . {unwrap } . {call: {"then" }with: { @ {JS object } . {from function: { . {then } } } } } } }
  }
- constructor . {from callbacks: { . {callbacks } f@ {resolve: { . {resolve } f@ {resolve: { . {js } @ {JS object } } } returns @ {void } }reject: { f@ {reject: { . {js } @ {JS object } } } returns @ {void } } } returns @ {void } } } { } {
- var . {js } := @ {JS object } . {globals } . {new: {"Promise" }with: { } }
+ constructor . {force wrap: { . {js } @ {JS object } } } { } {
  super . {wrap: { . {js } } }
  }
  classfunction . {wrap: { . {js } @ {JS object } } } { @ {promise } } { } {
