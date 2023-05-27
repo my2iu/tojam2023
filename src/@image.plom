@@ -1,0 +1,8 @@
+ class @ { image } extends @ {wrapped js object } {
+ vardecls {
+ }
+ constructor . {from: { . {url } @ {string } } } { } {
+ var . {js } @ {JS object } := @ {JS object } . {globals } . {new: {"Image" }with: { @ {JS object } . {from string: { . {url } } } } }
+ super . {wrap: { . {js } } }
+ }
+ }

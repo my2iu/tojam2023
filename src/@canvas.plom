@@ -1,0 +1,22 @@
+ class @ { canvas } extends @ {HTML element } {
+ vardecls {
+ }
+ function . {2D context } { @ {canvas 2D context } } { } {
+ return @ {canvas 2D context } . {force wrap: { . {js object } . {call: {"getContext" }with: {"2d" } } } }
+ }
+ constructor . {force wrap: { . {js } @ {JS object } } } { } {
+ super . {force wrap: { . {js } } }
+ }
+ classfunction . {rewrap: { . {wrapped } @ {wrapped js object } } } { @ {Canvas } } { } {
+ if { . {wrapped } = null } {
+ return null
+ }
+ return @ {canvas } . {wrap: { . {wrapped } . {unwrap } } }
+ }
+ classfunction . {wrap: { . {js } @ {JS object } } } { @ {Canvas } } { } {
+ if { . {js } = null } {
+ return null
+ }
+ return @ {canvas } . {force wrap: { . {js } } }
+ }
+ }

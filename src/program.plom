@@ -1,14 +1,21 @@
  module .{program} {
  vardecls {
+ var . {canvas } @ {Canvas }
  }
  function . {main } { @ {void } } { } {
 
-
- @ {HTML element } . {document } . {query selector: {"body" } } . {on event: {"click" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
+ . {canvas } := @ {canvas } . {rewrap: { @ {HTML element } . {document } . {query selector: {"#main canvas" } } } }
+ . {canvas } . {on event: {"click" }add listener: { lambda { f@ {on: { . {event } @ {HTML event } } } returns @ {void } } {
  . {event } . {prevent default }
  . {print: {"clicked" } }
 
  } } }
+ var . {title image } @ {image } := @ {image } . {from: {"temptitle.jpg" } }
+
+
+ @ {JS object } . {globals } . {call: {"setTimeout" }with: { @ {JS object } . {from function: { lambda { f@ {trigger } returns @ {void } } {
+ . {canvas }
+ } } } }and: { @ {JS object } . {from number: { 5000 } } } }
  . {print: {"hello" } }
  }
  }

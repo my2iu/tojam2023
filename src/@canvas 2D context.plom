@@ -1,0 +1,10 @@
+ class @ { canvas 2D context } extends @ {wrapped js object } {
+ vardecls {
+ }
+ function . {draw image: { . {image } @ {image } }x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {js object } . {call: {"drawImage" }with: { . {image } . {unwrap } }and: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } } }
+ }
+ constructor . {force wrap: { . {js } @ {JS object } } } { } {
+ super . {wrap: { . {js } } }
+ }
+ }
