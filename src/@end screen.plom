@@ -1,0 +1,21 @@
+ class @ { end screen } extends @ {game screen } {
+ vardecls {
+ var . {end image } @ {image }
+ }
+ function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ var . {new screen } @ {title screen } := @ {title screen } . {new }
+ . {game manager } . {switch to: { . {new screen } } }
+ }
+ function . {run } { @ {void } } { } {
+ . {ctx } . {draw image: { . {end image } }x: { 0 }y: { 0 } }
+ }
+ function . {start } { @ {void } } { } {
+ . {ctx } . {draw image: { . {loading image } }x: { 0 }y: { 0 } }
+
+ . {end image } := @ {image } . {from: {"Endscreen.jpg" } }
+ . {start wait list } . {+=: { . {end image } . {load promise } } }
+ }
+ constructor . {new } { } {
+ super . {new }
+ }
+ }

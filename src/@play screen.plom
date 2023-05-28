@@ -52,6 +52,13 @@
  }
 
  this . {redraw }
+
+
+ if { . {y } > 750 } {
+ var . {new screen } @ {end screen } := @ {end screen } . {new }
+ . {game manager } . {switch to: { . {new screen } } }
+ }
+
  }
  function . {pointer move at x: { . {x } @ {number } }y: { . {y } @ {number } }is down: { . {is down } @ {boolean } } } { @ {void } } { } {
  . {pointer x } := . {x }
