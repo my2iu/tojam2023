@@ -3,13 +3,13 @@
  var . {load promise } @ {promise }
  }
  function . {height } { @ {number } } { } {
- return . {js object } . {get: {"height" } }
+ return . {js object } . {get: {"height" } } . {as number }
  }
  function . {load promise } { @ {promise } } { } {
  return . {load promise }
  }
  function . {width } { @ {number } } { } {
- return . {js object } . {get: {"width" } }
+ return . {js object } . {get: {"width" } } . {as number }
  }
  constructor . {from: { . {url } @ {string } } } { } {
  var . {js } @ {JS object } := @ {JS object } . {globals } . {new: {"Image" } }

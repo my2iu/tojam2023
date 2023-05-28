@@ -9,13 +9,14 @@
  function . {pointer move at x: { . {x } @ {number } }y: { . {y } @ {number } }is down: { . {is down } @ {boolean } } } { @ {void } } { } {
  }
  function . {pointer up at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
- . {print: {"pointer up" + . {y } . {to string } } }
+
  }
  function . {redraw } { @ {void } } { } {
 
  . {ctx } . {draw image: { . {background image } }x: { 0 }y: { 0 } }
 
-
+ var . {image } @ {image } := ( . {items } . {at: { 0 } } as @ {backpack item } ) . {image }
+ . {ctx } . {draw image: { . {image } }x: { 240 - . {image } . {width } / 2 }y: { 300 } }
 
 
  . {ctx } . {draw image: { . {grid image } }x: { 0 }y: { 0 } }
@@ -31,7 +32,7 @@
  . {grid image } := @ {image } . {from: {"Grid.png" } }
  . {start wait list } . {+=: { . {background image } . {load promise } } } . {+=: { . {grid image } . {load promise } } }
 
- var . {n } := 0
+ var . {n } @ {number } := 0
  while { . {n } < . {items } . {size } } {
  var . {item image } @ {image } := . {items } . {at: { . {n } } } as @ {backpack item } . {image }
  if { . {item image } != null } {
