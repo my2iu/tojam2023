@@ -26,20 +26,22 @@
 			let paragraphs = text.split('\n');
 			for (let pidx = 0; pidx < paragraphs.length; pidx++ )
 			{
-				let words = lines.split(' ');
+				let words = paragraphs[pidx].split(' ');
 				let line = "";
 				for (let widx = 0; widx < words.length; widx++)
 				{
 					let testline = line;
 					if (testline != "") testline += " ";
 					testline += words[widx];
-					let measure = measureText(testline);
+					let measure = ctx.measureText(testline);
 					lineHeight = Math.max(lineHeight, measure.fontBoundingBoxAscent + measure.fontBoundingBoxDescent);
 					if (measure.width > width) {
 						lines.push(line);
 						testline = words[widx];
 					}
+					line = testline;
 				}
+				if (line != '') lines.push(line);
 			}
 			for (let idx = 0; idx < lines.length; idx++) {
 				ctx.fillText(lines[idx], x, y + idx * lineHeight);
