@@ -14,6 +14,12 @@
  . {description } := . {str }
  return this
  }
+ function . {grid height } { @ {number } } { } {
+ return ( . {image } . {height } / 24 ) . {ceiling }
+ }
+ function . {grid width } { @ {number } } { } {
+ return ( . {image } . {width } / 24 ) . {ceiling }
+ }
  function . {image } { @ {image } } { } {
  return . {image }
  }

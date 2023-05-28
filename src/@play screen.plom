@@ -7,6 +7,11 @@
  var . {pointer y } @ {number }
  var . {dragging item } @ {backpack item }
  var . {current item index } @ {number }
+ var . {grid corner x } @ {number }
+ var . {grid corner y } @ {number }
+ var . {grid width } @ {number }
+ var . {grid height } @ {number }
+ var . {grid size } @ {number }
  }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
  . {pointer x } := . {x }
@@ -37,11 +42,15 @@
 
  var . {image } @ {image }
 
+ if { . {current item index } < . {items } . {size } } {
  var . {current backpack item } @ {backpack item } := . {items } . {at: { . {current item index } } } as @ {backpack item }
  if { . {current backpack item } != . {dragging item } } {
  . {image } := . {current backpack item } . {image }
  . {ctx } . {draw image: { . {image } }x: { 240 - . {image } . {width } / 2 }y: { 300 } }
  }
+
+ }
+
 
 
 
@@ -51,8 +60,18 @@
  if { . {dragging item } != null } {
 
  . {image } := . {dragging item } . {image }
-
+ if { . {pointer x } > . {grid corner x } and . {pointer x } < . {grid corner x } + . {grid width } * . {grid size } and . {pointer y } > . {grid corner y } and . {pointer y } < . {grid corner y } + . {grid size } * . {grid height } } {
+ var . {snap x } @ {number } := ( ( . {pointer x } - . {dragging item } . {grid width } / 2 * . {grid size } - . {grid corner x } ) / . {grid size } ) . {floor }
+ var . {snap y } @ {number } := ( ( . {pointer y } - . {dragging item } . {grid height } / 2 * . {grid size } - . {grid corner y } ) / . {grid size } ) . {floor }
+ . {ctx } . {draw image: { . {image } }x: { . {grid size } * . {snap x } + . {grid corner x } }y: { . {grid size } * . {snap y } + . {grid corner y } } }
+ }
+ else {
  . {ctx } . {draw image: { . {image } }x: { . {pointer x } - . {image } . {width } / 2 }y: { . {pointer y } - . {image } . {height } / 2 } }
+
+ }
+
+
+
  }
 
  }
@@ -81,6 +100,11 @@
  . {pointer x } := 0
  . {pointer y } := 0
  . {current item index } := 0
+ . {grid corner x } := 120
+ . {grid corner y } := 80
+ . {grid width } := 10
+ . {grid height } := 7
+ . {grid size } := 24
  . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } } }
  }
  }
