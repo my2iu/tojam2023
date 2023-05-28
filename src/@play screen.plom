@@ -13,6 +13,22 @@
  var . {grid height } @ {number }
  var . {grid size } @ {number }
  }
+ function . {draw items in suitcase } { @ {void } } { } {
+ var . {n } @ {number } := 0
+ while { . {n } < . {items } . {size } } {
+ var . {item } @ {backpack item } := . {items } . {at: { . {n } } } as @ {backpack item }
+ if { . {item } . {is placed } } {
+ var . {item image } @ {image } := . {item } . {image }
+ . {ctx } . {draw image: { . {item image } }x: { . {item } . {x } * . {grid size } + . {grid corner x } }y: { . {item } . {y } * . {grid size } + . {grid corner y } } }
+ }
+
+ . {n } := . {n } + 1
+ }
+
+ }
+ function . {is in grid pointer x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {boolean } } { } {
+ return . {x } > . {grid corner x } and . {x } < . {grid corner x } + . {grid width } * . {grid size } and . {y } > . {grid corner y } and . {y } < . {grid corner y } + . {grid size } * . {grid height }
+ }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
  . {pointer x } := . {x }
  . {pointer y } := . {y }
@@ -32,15 +48,32 @@
  function . {pointer up at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
  . {pointer x } := . {x }
  . {pointer y } := . {y }
+
+ if { . {dragging item } != null and this . {is in grid pointer x: { . {pointer x } }y: { . {pointer y } } } } {
+ var . {snap x } @ {number } := this . {pointer x to grid x: { . {pointer x } } }
+ var . {snap y } @ {number } := this . {pointer y to grid y: { . {pointer y } } }
+ . {dragging item } . {place at x: { . {snap x } }y: { . {snap y } } }
+ }
+
+
+
  . {dragging item } := null
 
  this . {redraw }
+ }
+ function . {pointer x to grid x: { . {x } @ {number } } } { @ {number } } { } {
+ return ( ( . {x } - . {dragging item } . {grid width } / 2 * . {grid size } - . {grid corner x } ) / . {grid size } ) . {floor }
+ }
+ function . {pointer y to grid y: { . {y } @ {number } } } { @ {number } } { } {
+ return ( ( . {y } - . {dragging item } . {grid height } / 2 * . {grid size } - . {grid corner y } ) / . {grid size } ) . {floor }
  }
  function . {redraw } { @ {void } } { } {
  . {ctx } . {clear rectangle at x: { 0 }y: { 0 }width: { . {canvas } . {width } }height: { . {canvas } . {height } } }
  . {ctx } . {draw image: { . {background image } }x: { 0 }y: { 0 } }
 
  var . {image } @ {image }
+
+ // Draw item being looked at
 
  if { . {current item index } < . {items } . {size } } {
  var . {current backpack item } @ {backpack item } := . {items } . {at: { . {current item index } } } as @ {backpack item }
@@ -51,6 +84,8 @@
 
  }
 
+ // Draw items in suitcase
+ this . {draw items in suitcase }
 
 
 
@@ -60,9 +95,9 @@
  if { . {dragging item } != null } {
 
  . {image } := . {dragging item } . {image }
- if { . {pointer x } > . {grid corner x } and . {pointer x } < . {grid corner x } + . {grid width } * . {grid size } and . {pointer y } > . {grid corner y } and . {pointer y } < . {grid corner y } + . {grid size } * . {grid height } } {
- var . {snap x } @ {number } := ( ( . {pointer x } - . {dragging item } . {grid width } / 2 * . {grid size } - . {grid corner x } ) / . {grid size } ) . {floor }
- var . {snap y } @ {number } := ( ( . {pointer y } - . {dragging item } . {grid height } / 2 * . {grid size } - . {grid corner y } ) / . {grid size } ) . {floor }
+ if { this . {is in grid pointer x: { . {pointer x } }y: { . {pointer y } } } } {
+ var . {snap x } @ {number } := this . {pointer x to grid x: { . {pointer x } } }
+ var . {snap y } @ {number } := this . {pointer y to grid y: { . {pointer y } } }
  . {ctx } . {draw image: { . {image } }x: { . {grid size } * . {snap x } + . {grid corner x } }y: { . {grid size } * . {snap y } + . {grid corner y } } }
  }
  else {
