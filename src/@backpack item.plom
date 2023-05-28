@@ -1,0 +1,58 @@
+ class @ { backpack item } extends @ {object } {
+ vardecls {
+ var . {name } @ {string }
+ var . {description } @ {string }
+ var . {image } @ {image }
+ var . {is placed } @ {boolean }
+ var . {x } @ {number }
+ var . {y } @ {number }
+ }
+ function . {description } { @ {string } } { } {
+ return . {description }
+ }
+ function . {description: { . {str } @ {string } } } { @ {backpack item } } { } {
+ . {description } := . {str }
+ return this
+ }
+ function . {image } { @ {image } } { } {
+ return . {image }
+ }
+ function . {image: { . {img } @ {image } } } { @ {backpack item } } { } {
+ . {image } := . {img }
+ return this
+ }
+ function . {is placed } { @ {boolean } } { } {
+ return . {is placed }
+ }
+ function . {name } { @ {string } } { } {
+ return . {name }
+ }
+ function . {name: { . {str } @ {string } } } { @ {backpack item } } { } {
+ . {name } := . {str }
+ return this
+ }
+ function . {place at x: { . {xx } @ {number } }y: { . {yy } @ {number } } } { @ {backpack item } } { } {
+ . {is placed } := true
+ . {x } := . {xx }
+ . {y } := . {yy }
+ }
+ function . {unplace } { @ {backpack item } } { } {
+ . {is placed } := false
+ return this
+ }
+ function . {x } { @ {number } } { } {
+ return . {x }
+ }
+ function . {y } { @ {number } } { } {
+ return . {y }
+ }
+ constructor . {new } { } {
+ super . {new }
+ . {is placed } := false
+ . {x } := 0
+ . {y } := 0
+ }
+ classfunction . {create } { @ {backpack item } } { } {
+ return @ {backpack item } . {new }
+ }
+ }

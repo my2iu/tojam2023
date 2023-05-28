@@ -2,6 +2,7 @@
  vardecls {
  var . {background image } @ {image }
  var . {grid image } @ {image }
+ var . {items } @ {array }
  }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
  }
@@ -10,10 +11,18 @@
  function . {pointer up at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
  . {print: {"pointer up" + . {y } . {to string } } }
  }
- function . {run } { @ {void } } { } {
+ function . {redraw } { @ {void } } { } {
 
  . {ctx } . {draw image: { . {background image } }x: { 0 }y: { 0 } }
+
+
+
+
  . {ctx } . {draw image: { . {grid image } }x: { 0 }y: { 0 } }
+
+ }
+ function . {run } { @ {void } } { } {
+ this . {redraw }
  }
  function . {start } { @ {void } } { } {
  . {ctx } . {draw image: { . {loading image } }x: { 0 }y: { 0 } }
@@ -21,9 +30,19 @@
  . {background image } := @ {image } . {from: {"Suitcase.png" } }
  . {grid image } := @ {image } . {from: {"Grid.png" } }
  . {start wait list } . {+=: { . {background image } . {load promise } } } . {+=: { . {grid image } . {load promise } } }
+
+ var . {n } := 0
+ while { . {n } < . {items } . {size } } {
+ var . {item image } @ {image } := . {items } . {at: { . {n } } } as @ {backpack item } . {image }
+ if { . {item image } != null } {
+ . {start wait list } . {+=: { . {item image } } }
+ }
+ . {n } := . {n } + 1
+ }
+
  }
  constructor . {new } { } {
  super . {new }
-
+ . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } } }
  }
  }

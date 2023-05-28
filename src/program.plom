@@ -76,5 +76,10 @@
  . {ctx } . {draw image: { . {title image } }x: { 0 }y: { 0 } }
  return null
  } } }
+
+
+
+ var . {image } @ {image } := . {items } . {at: { 0 } } as @ {backpack item } . {image }
+ . {ctx } . {draw image: { . {image } }x: { 240 - . {image } . {width } / 2 }y: { 300 } }
  }
  }
