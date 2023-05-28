@@ -2,6 +2,7 @@
  vardecls {
  var . {background image } @ {image }
  var . {grid image } @ {image }
+ var . {packed image } @ {image }
  var . {items } @ {array }
  var . {pointer x } @ {number }
  var . {pointer y } @ {number }
@@ -33,7 +34,10 @@
  . {pointer x } := . {x }
  . {pointer y } := . {y }
  if { . {x } > 100 and . {x } < 380 and . {y } > 300 and . {y } < 500 } {
- . {dragging item } := . {items } . {at: { . {current item index } } } as @ {backpack item }
+ var . {current backpack item } @ {backpack item } := . {items } . {at: { . {current item index } } } as @ {backpack item }
+ if { . {current backpack item } . {is placed } . {not } } {
+ . {dragging item } := . {current backpack item }
+ }
 
  }
  if { . {x } > 405 and . {y } > 300 and . {y } < 600 } {
@@ -101,6 +105,10 @@
  if { . {current backpack item } != . {dragging item } } {
  . {image } := . {current backpack item } . {image }
  . {ctx } . {draw image: { . {image } }x: { 240 - . {image } . {width } / 2 }y: { 300 } }
+ if { . {current backpack item } . {is placed } } {
+ . {ctx } . {draw image: { . {packed image } }x: { 240 - . {packed image } . {width } / 2 }y: { 300 } }
+ }
+
  }
 
  }
@@ -139,7 +147,8 @@
 
  . {background image } := @ {image } . {from: {"Suitcase.png" } }
  . {grid image } := @ {image } . {from: {"Grid.png" } }
- . {start wait list } . {+=: { . {background image } . {load promise } } } . {+=: { . {grid image } . {load promise } } }
+ . {packed image } := @ {image } . {from: {"Packed.png" } }
+ . {start wait list } . {+=: { . {background image } . {load promise } } } . {+=: { . {grid image } . {load promise } } } . {+=: { . {packed image } . {load promise } } }
 
  var . {n } @ {number } := 0
  while { . {n } < . {items } . {size } } {
