@@ -36,6 +36,20 @@
  . {dragging item } := . {items } . {at: { . {current item index } } } as @ {backpack item }
 
  }
+ if { . {x } > 405 and . {y } > 300 and . {y } < 600 } {
+ . {current item index } := . {current item index } + 1
+ if { . {current item index } >= . {items } . {size } } {
+ . {current item index } := 0
+ }
+
+ }
+ if { . {x } < 75 and . {y } > 300 and . {y } < 600 } {
+ . {current item index } := . {current item index } - 1
+ if { . {current item index } < 0 } {
+ . {current item index } := . {items } . {size } - 1
+ }
+
+ }
 
  this . {redraw }
  }
@@ -140,6 +154,7 @@
  . {grid width } := 10
  . {grid height } := 7
  . {grid size } := 24
- . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } } }
+ . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } } } . {+=: { @ {backpack item } . {create } . {name: {"shield" } } . {image: { @ {image } . {from: {"Shield.png" } } } } } }
+
  }
  }
