@@ -30,6 +30,22 @@
  function . {is in grid pointer x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {boolean } } { } {
  return . {x } > . {grid corner x } and . {x } < . {grid corner x } + . {grid width } * . {grid size } and . {y } > . {grid corner y } and . {y } < . {grid corner y } + . {grid size } * . {grid height }
  }
+ function . {is item packed: { . {item name } @ {string } } } { @ {boolean } } { } {
+ var . {n } @ {number } := 0
+ while { . {n } < . {items } . {size } } {
+ var . {item } @ {backpack item } := . {items } . {at: { . {n } } } as @ {backpack item }
+ if { . {item } . {is placed } } {
+ if { . {item } . {name } = . {item name } } {
+ return true
+ }
+
+ }
+
+ . {n } := . {n } + 1
+ }
+
+ return false
+ }
  function . {is pointer hit on packed item: { . {item } @ {backpack item } }x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {boolean } } { } {
 
  var . {snap x } @ {number } := this . {pointer x to grid x: { . {x } } }
@@ -196,10 +212,35 @@
 
  }
  function . {start epilogue } { @ {void } } { } {
+ // Generate the epilogue text
+ var . {epilogue } @ {string } :=""
+ . {epilogue } := . {epilogue } +"The adventurer takes your gear and heads off for adventure. "
+
+ var . {game over } @ {boolean } := false
+
+ // Encounter the first foe
+ . {epilogue } := . {epilogue } +"They come across a horrendous ogre. "
+ if { this . {is item packed: {"sword" } } } {
+ . {epilogue } := . {epilogue } +"Using the sword, they drive the ogre away. "
+ }
+ else {
+ . {epilogue } := . {epilogue } +"Without a weapon, they must retreat. "
+ . {epilogue } := . {epilogue } +"The end. "
+ . {game over } := true
+ }
+
+
+
+ // Is there enough room leftover to bring loot home?
+
+
+
+ // Switch to showing the epilogue
+
  var . {return to title screen } @ {title screen } := @ {title screen } . {new }
 
  var . {new screen } @ {end screen } := @ {end screen } . {new }
- . {new screen } . {background image: {"Endscreen.jpg" } } . {text: {"The adventurer takes your gear and heads off for adventure." } } . {text y: { 150 } } . {next: { . {return to title screen } } }
+ . {new screen } . {background image: {"Endscreen.jpg" } } . {text: { . {epilogue } } } . {text y: { 150 } } . {next: { . {return to title screen } } }
  . {game manager } . {switch to: { . {new screen } } }
  }
  constructor . {new } { } {

@@ -27,7 +27,7 @@
 
  var . {game } @ {play screen } := @ {play screen } . {new }
 
- . {intro screen } . {next: { . {game } } } . {font: {"35px sans-serif" } } . {text: {"hello\n\nTap to continue" } }
+ . {intro screen } . {next: { . {game } } } . {font: {"30px sans-serif" } } . {text: {"The adventurer has a big quest to embark on. But what should they bring? " +"Pack equipment for the quest by dragging things into and out of the backpack." +"\n\n\nTap to continue" } }
 
 
 
