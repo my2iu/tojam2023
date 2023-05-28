@@ -3,23 +3,57 @@
  var . {background image } @ {image }
  var . {grid image } @ {image }
  var . {items } @ {array }
+ var . {pointer x } @ {number }
+ var . {pointer y } @ {number }
+ var . {dragging item } @ {backpack item }
+ var . {current item index } @ {number }
  }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {pointer x } := . {x }
+ . {pointer y } := . {y }
+ if { . {x } > 100 and . {x } < 380 and . {y } > 300 and . {y } < 500 } {
+ . {dragging item } := . {items } . {at: { . {current item index } } } as @ {backpack item }
+
+ }
+
+ this . {redraw }
  }
  function . {pointer move at x: { . {x } @ {number } }y: { . {y } @ {number } }is down: { . {is down } @ {boolean } } } { @ {void } } { } {
+ . {pointer x } := . {x }
+ . {pointer y } := . {y }
+
+ this . {redraw }
  }
  function . {pointer up at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {pointer x } := . {x }
+ . {pointer y } := . {y }
+ . {dragging item } := null
 
+ this . {redraw }
  }
  function . {redraw } { @ {void } } { } {
-
+ . {ctx } . {clear rectangle at x: { 0 }y: { 0 }width: { . {canvas } . {width } }height: { . {canvas } . {height } } }
  . {ctx } . {draw image: { . {background image } }x: { 0 }y: { 0 } }
 
- var . {image } @ {image } := ( . {items } . {at: { 0 } } as @ {backpack item } ) . {image }
+ var . {image } @ {image }
+
+ var . {current backpack item } @ {backpack item } := . {items } . {at: { . {current item index } } } as @ {backpack item }
+ if { . {current backpack item } != . {dragging item } } {
+ . {image } := . {current backpack item } . {image }
  . {ctx } . {draw image: { . {image } }x: { 240 - . {image } . {width } / 2 }y: { 300 } }
+ }
+
 
 
  . {ctx } . {draw image: { . {grid image } }x: { 0 }y: { 0 } }
+
+
+ if { . {dragging item } != null } {
+
+ . {image } := . {dragging item } . {image }
+
+ . {ctx } . {draw image: { . {image } }x: { . {pointer x } - . {image } . {width } / 2 }y: { . {pointer y } - . {image } . {height } / 2 } }
+ }
 
  }
  function . {run } { @ {void } } { } {
@@ -44,6 +78,9 @@
  }
  constructor . {new } { } {
  super . {new }
+ . {pointer x } := 0
+ . {pointer y } := 0
+ . {current item index } := 0
  . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } } }
  }
  }
