@@ -101,8 +101,8 @@
  . {pointer y } := . {y }
 
  if { . {dragging item } != null and this . {is in grid pointer x: { . {pointer x } }y: { . {pointer y } } } } {
- var . {snap x } @ {number } := this . {pointer x to grid x: { . {pointer x } } }
- var . {snap y } @ {number } := this . {pointer y to grid y: { . {pointer y } } }
+ var . {snap x } @ {number } := this . {pointer x to grid x: { . {pointer x } - . {dragging item } . {grid width } / 2 * . {grid size } } }
+ var . {snap y } @ {number } := this . {pointer y to grid y: { . {pointer y } - . {dragging item } . {grid height } / 2 * . {grid size } } }
  . {dragging item } . {place at x: { . {snap x } }y: { . {snap y } } }
  }
 
@@ -113,10 +113,10 @@
  this . {redraw }
  }
  function . {pointer x to grid x: { . {x } @ {number } } } { @ {number } } { } {
- return ( ( . {x } - . {dragging item } . {grid width } / 2 * . {grid size } - . {grid corner x } ) / . {grid size } ) . {floor }
+ return ( ( . {x } - . {grid corner x } ) / . {grid size } ) . {floor }
  }
  function . {pointer y to grid y: { . {y } @ {number } } } { @ {number } } { } {
- return ( ( . {y } - . {dragging item } . {grid height } / 2 * . {grid size } - . {grid corner y } ) / . {grid size } ) . {floor }
+ return ( ( . {y } - . {grid corner y } ) / . {grid size } ) . {floor }
  }
  function . {redraw } { @ {void } } { } {
  . {ctx } . {clear rectangle at x: { 0 }y: { 0 }width: { . {canvas } . {width } }height: { . {canvas } . {height } } }
@@ -151,8 +151,8 @@
 
  . {image } := . {dragging item } . {image }
  if { this . {is in grid pointer x: { . {pointer x } }y: { . {pointer y } } } } {
- var . {snap x } @ {number } := this . {pointer x to grid x: { . {pointer x } } }
- var . {snap y } @ {number } := this . {pointer y to grid y: { . {pointer y } } }
+ var . {snap x } @ {number } := this . {pointer x to grid x: { . {pointer x } - . {dragging item } . {grid width } / 2 * . {grid size } } }
+ var . {snap y } @ {number } := this . {pointer y to grid y: { . {pointer y } - . {dragging item } . {grid height } / 2 * . {grid size } } }
  . {ctx } . {draw image: { . {image } }x: { . {grid size } * . {snap x } + . {grid corner x } }y: { . {grid size } * . {snap y } + . {grid corner y } } }
  }
  else {
