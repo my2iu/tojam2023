@@ -70,5 +70,11 @@
  @ {JS object } . {globals } . {call: {"setTimeout" }with: { @ {JS object } . {from function: { lambda { f@ {trigger } returns @ {void } } {
  . {canvas } . {2D context } . {draw image: { . {title image } }x: { 50 }y: { 100 } }
  } } } }and: { @ {JS object } . {from number: { 1000 } } } }
+
+
+ . {title image } . {load promise } . {then: { lambda { f@ {run with: { . {value } @ {JS object } } } returns @ {object } } {
+ . {ctx } . {draw image: { . {title image } }x: { 0 }y: { 0 } }
+ return null
+ } } }
  }
  }

@@ -7,6 +7,17 @@
  constructor . {force wrap: { . {js } @ {JS object } } } { } {
  super . {wrap: { . {js } } }
  }
+ classfunction . {all: { . {promise array } @ {array } } } { @ {promise } } { } {
+ var . {new array } @ {array } := @ {array } . {new }
+ var . {unwrapped promises } @ {JS object } := . {new array } . {JS array }
+ var . {n } @ {number } := 0
+ while { . {n } < . {promise array } . {size } } {
+ . {unwrapped promises } . {call: {"push" }with: { . {promise array } . {at: { . {n } } } as @ {promise } . {unwrap } } }
+
+ . {n } := . {n } + 1
+ }
+ return @ {promise } . {wrap: { @ {JS object } . {globals } . {get: {"Promise" } } . {call: {"all" }with: { . {unwrapped promises } } } } }
+ }
  classfunction . {wrap: { . {js } @ {JS object } } } { @ {promise } } { } {
  if { . {js } = null } {
  return null

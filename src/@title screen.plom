@@ -1,5 +1,6 @@
  class @ { title screen } extends @ {game screen } {
  vardecls {
+ var . {title image } @ {image }
  }
  function . {close } { @ {void } } { } {
 
@@ -9,14 +10,15 @@
  . {game manager } . {switch to: { . {new screen } } }
 
  }
+ function . {run } { @ {void } } { } {
+ . {ctx } . {draw image: { . {title image } }x: { 0 }y: { 0 } }
+ }
  function . {start } { @ {void } } { } {
  . {ctx } . {draw image: { . {loading image } }x: { 0 }y: { 0 } }
 
- var . {title image } @ {image } := @ {image } . {from: {"Title screen.jpg" } }
- . {title image } . {load promise } . {then: { lambda { f@ {run with: { . {value } @ {JS object } } } returns @ {object } } {
- . {ctx } . {draw image: { . {title image } }x: { 0 }y: { 0 } }
- return null
- } } }
+ . {title image } := @ {image } . {from: {"Title screen.jpg" } }
+ . {start wait list } . {+=: { . {title image } . {load promise } } }
+
 
 
  }

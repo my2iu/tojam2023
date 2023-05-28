@@ -1,6 +1,12 @@
  class @ { game screen } extends @ {object } {
  vardecls {
  var . {game manager } @ {game manager }
+
+ // An array of promises that must be completed before .run is executed. During .start, you can fill this up with the promises of resources waiting to load in. Then, the @game manager will wait for all those promises to complete and those resources to load before it will call .run
+ var . {start wait list } @ {array }
+ }
+ function . {all loaded promise } { @ {promise } } { } {
+ return @ {promise } . {all: { . {start wait list } } }
  }
  function . {close } { @ {void } } { } {
 
@@ -20,5 +26,6 @@
  }
  constructor . {new } { } {
  super . {new }
+ . {start wait list } := @ {array } . {new }
  }
  }

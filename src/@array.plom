@@ -3,11 +3,14 @@
  var . {native } @ {JS object }
  }
  function . {+=: { . {value } @ {object } } } { @ {array } } { } {
- . {native } . {call: {"push" }with: { . {value } } }
+ . {native } . {call: {"push" }with: { @ {JS object } . {passthrough to JS: { . {value } } } } }
  return this
  }
+ function . {JS array } { @ {JS object } } { } {
+ return . {native }
+ }
  function . {at: { . {index } @ {number } } } { @ {object } } { } {
- return . {native } . {call: {"at" }with: { @ {JS object } . {from number: { . {index } } } } }
+ return . {native } . {call: {"at" }with: { @ {JS object } . {from number: { . {index } } } } } . {passthrough to Plom }
 
  }
  function . {size } { @ {number } } { } {

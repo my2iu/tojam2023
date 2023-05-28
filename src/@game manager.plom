@@ -3,7 +3,10 @@
  var . {current screen } @ {game screen }
  }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ if { . {current screen } != null } {
  . {current screen } . {pointer down at x: { . {x } }y: { . {y } } }
+ }
+
  }
  function . {pointer move at x: { . {x } @ {number } }y: { . {y } @ {number } }is down: { . {is down } @ {boolean } } } { @ {void } } { } {
  if { . {current screen } != null } {
@@ -12,19 +15,22 @@
 
  }
  function . {pointer up at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ if { . {current screen } != null } {
  . {current screen } . {pointer up at x: { . {x } }y: { . {y } } }
  }
+
+ }
  function . {switch to: { . {screen } @ {game screen } } } { @ {void } } { } {
-
  if { . {current screen } != null } {
-
  . {current screen } . {close }
-
  }
  . {current screen } := . {screen }
  . {current screen } . {game manager: { this } }
  . {current screen } . {start }
+ . {current screen } . {all loaded promise } . {then: { lambda { f@ {run with: { . {alue } @ {JS object } } } returns @ {object } } {
  . {current screen } . {run }
+ } } }
+
  }
  constructor . {new } { } {
  super . {new }
