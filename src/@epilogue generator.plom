@@ -8,6 +8,7 @@
  . {epilogue } := . {epilogue } +"The adventurer takes your gear and heads off for adventure. "
 
  var . {game over } @ {boolean } := false
+ var . {hp } @ {number } := 2
 
  // Encounter the first foe
  . {epilogue } := . {epilogue } +"They come across a horrendous ogre. "
@@ -19,18 +20,70 @@
 
  if { this . {is item packed: {"sword" } } } {
  . {epilogue } := . {epilogue } +"Using the steel sword, they drive the ogre away. "
+ if { this . {is item packed: {"shield" } } } {
+ . {epilogue } := . {epilogue } +"They were able to block most of the ogre’s attacks with the shield, so they were only lightly wounded during the battle. "
+ . {hp } := . {hp } - 1
+ }
+ else {
+ . {epilogue } := . {epilogue } +"Nonetheless, they were heavily wounded during the ogre’s attacks. "
+ . {hp } := . {hp } - 2
+ }
+
+
  }
  else {
  . {epilogue } := . {epilogue } +"Without a weapon, they must retreat. "
- . {epilogue } := . {epilogue } +"The end. "
+
  . {game over } := true
  }
 
+ if { . {game over } . {not } and . {hp } < 2 and this . {is item packed: {"health potion" } } } {
+ . {hp } := . {hp } + 1
+ if { . {hp } = 2 } {
+ . {epilogue } := . {epilogue } +"They are able to use the health potion to restore themselves to full health. "
+ }
+ else {
+ . {epilogue } := . {epilogue } +"They are able to use the health potion to heal some of their wounds, but they are still weak. "
+ }
+
+ }
+
+ if { . {game over } . {not } and . {hp } <= 0 } {
+ . {epilogue } := . {epilogue } +"Weakened from the battle, the adventurer decides to end their quest. "
+ . {game over } := true
+ }
+
+ if { . {game over } . {not } } {
+ . {epilogue } := . {epilogue } +"The adventurer crosses the murky forest to distant lands. "
+ if { this . {is item packed: {"food" } } } {
+ . {epilogue } := . {epilogue } +"With nothing to eat in those cursed woods, they need to eat their rations to survive. "
+ this . {remove item: {"food" } }
+ }
+ else {
+ . {epilogue } := . {epilogue } +"With nothing to eat in those cursed woods, they become weak from hunger. "
+ . {hp } := . {hp } - 1
+ }
+
+ if { . {hp } <= 0 } {
+ . {epilogue } := . {epilogue } +"Being too weak to continue, the adventurer has to end their quest. "
+ . {game over } := true
+ }
+
+ }
+
+ if { . {game over } . {not } } {
+ . {epilogue } := . {epilogue } +"After traversing the murky woods, they arrive at the sacred temple, where they learn the secret of getting goats to stand on poles. "
+ }
 
 
 
 
  // Is there enough room leftover to bring loot home?
+
+
+
+
+ . {epilogue } := . {epilogue } +"The end. "
 
  return . {epilogue }
  }
