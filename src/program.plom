@@ -5,6 +5,10 @@
  var . {game manager } @ {game manager }
  var . {loading image } @ {image }
  }
+ function . {log: { . {value } @ {object } } } { @ {void } } { } {
+ var . {str } @ {string } := . {value } . {to string }
+ @ {JS object } . {globals } . {get: {"console" } } . {call: {"log" }with: { . {str } } }
+ }
  function . {main } { @ {void } } { } {
 
  . {canvas } := @ {canvas } . {rewrap: { @ {HTML element } . {document } . {query selector: {"#main canvas" } } } }
