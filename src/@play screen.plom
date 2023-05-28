@@ -30,22 +30,6 @@
  function . {is in grid pointer x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {boolean } } { } {
  return . {x } > . {grid corner x } and . {x } < . {grid corner x } + . {grid width } * . {grid size } and . {y } > . {grid corner y } and . {y } < . {grid corner y } + . {grid size } * . {grid height }
  }
- function . {is item packed: { . {item name } @ {string } } } { @ {boolean } } { } {
- var . {n } @ {number } := 0
- while { . {n } < . {items } . {size } } {
- var . {item } @ {backpack item } := . {items } . {at: { . {n } } } as @ {backpack item }
- if { . {item } . {is placed } } {
- if { . {item } . {name } = . {item name } } {
- return true
- }
-
- }
-
- . {n } := . {n } + 1
- }
-
- return false
- }
  function . {is pointer hit on packed item: { . {item } @ {backpack item } }x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {boolean } } { } {
 
  var . {snap x } @ {number } := this . {pointer x to grid x: { . {x } } }
@@ -213,25 +197,8 @@
  }
  function . {start epilogue } { @ {void } } { } {
  // Generate the epilogue text
- var . {epilogue } @ {string } :=""
- . {epilogue } := . {epilogue } +"The adventurer takes your gear and heads off for adventure. "
-
- var . {game over } @ {boolean } := false
-
- // Encounter the first foe
- . {epilogue } := . {epilogue } +"They come across a horrendous ogre. "
- if { this . {is item packed: {"sword" } } } {
- . {epilogue } := . {epilogue } +"Using the sword, they drive the ogre away. "
- }
- else {
- . {epilogue } := . {epilogue } +"Without a weapon, they must retreat. "
- . {epilogue } := . {epilogue } +"The end. "
- . {game over } := true
- }
-
-
-
- // Is there enough room leftover to bring loot home?
+ var . {epilogue generator } @ {epilogue generator } := @ {epilogue generator } . {with items: { . {items } } }
+ var . {epilogue } @ {string } := . {epilogue generator } . {generate }
 
 
 
@@ -253,7 +220,7 @@
  . {grid width } := 10
  . {grid height } := 7
  . {grid size } := 24
- . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } . {description: {"A long sword made of steel" } } } } . {+=: { @ {backpack item } . {create } . {name: {"shield" } } . {image: { @ {image } . {from: {"Shield.png" } } } } . {description: {"A strong shield" } } } }
+ . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } . {description: {"A long sword made of steel" } } } } . {+=: { @ {backpack item } . {create } . {name: {"shield" } } . {image: { @ {image } . {from: {"Shield.png" } } } } . {description: {"A strong shield" } } } } . {+=: { @ {backpack item } . {create } . {name: {"golden sword" } } . {image: { @ {image } . {from: {"Golden sword.png" } } } } . {description: {"The legendary golden sword is an ancient sword filled with ceremony and history. It is gold and jewel encrusted." } } } } . {+=: { @ {backpack item } . {create } . {name: {"flowers" } } . {image: { @ {image } . {from: {"Flowers.png" } } } } . {description: {"A bouquet of flowers" } } } }
 
  }
  }

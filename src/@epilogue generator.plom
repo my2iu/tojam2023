@@ -1,0 +1,74 @@
+ class @ { epilogue generator } extends @ {object } {
+ vardecls {
+ var . {items } @ {array }
+ }
+ function . {generate } { @ {string } } { } {
+ // Generate the epilogue text
+ var . {epilogue } @ {string } :=""
+ . {epilogue } := . {epilogue } +"The adventurer takes your gear and heads off for adventure. "
+
+ var . {game over } @ {boolean } := false
+
+ // Encounter the first foe
+ . {epilogue } := . {epilogue } +"They come across a horrendous ogre. "
+
+ if { this . {is item packed: {"golden sword" } } } {
+ . {epilogue } := . {epilogue } +"They draw the golden sword, but it is an old antique and made of gold, so it quickly falls apart. "
+ this . {remove item: {"golden sword" } }
+ }
+
+ if { this . {is item packed: {"sword" } } } {
+ . {epilogue } := . {epilogue } +"Using the steel sword, they drive the ogre away. "
+ }
+ else {
+ . {epilogue } := . {epilogue } +"Without a weapon, they must retreat. "
+ . {epilogue } := . {epilogue } +"The end. "
+ . {game over } := true
+ }
+
+
+
+
+
+ // Is there enough room leftover to bring loot home?
+
+ return . {epilogue }
+ }
+ function . {is item packed: { . {item name } @ {string } } } { @ {boolean } } { } {
+ var . {n } @ {number } := 0
+ while { . {n } < . {items } . {size } } {
+ var . {item } @ {backpack item } := . {items } . {at: { . {n } } } as @ {backpack item }
+ if { . {item } . {is placed } } {
+ if { . {item } . {name } = . {item name } } {
+ return true
+ }
+
+ }
+
+ . {n } := . {n } + 1
+ }
+
+ return false
+ }
+ function . {remove item: { . {item name } @ {string } } } { @ {void } } { } {
+ var . {n } @ {number } := 0
+ while { . {n } < . {items } . {size } } {
+ var . {item } @ {backpack item } := . {items } . {at: { . {n } } } as @ {backpack item }
+ if { . {item } . {is placed } } {
+ if { . {item } . {name } = . {item name } } {
+ . {item } . {unplace }
+ return this
+ }
+
+ }
+
+ . {n } := . {n } + 1
+ }
+
+ return this
+ }
+ constructor . {with items: { . {array } @ {array } } } { } {
+ super . {new }
+ . {items } := . {array }
+ }
+ }
