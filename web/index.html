@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script>$wnd = window; var $gwtOnLoad = []; function addGwtOnLoad(fn) { $gwtOnLoad.push(fn); }</script>
     <script type="text/javascript" language="javascript" src="plomdirect.js"></script>
     <script type="text/javascript" language="javascript" src="plomUi.js"></script>
@@ -31,10 +32,11 @@
 		div#main {
 		}
 		div#main canvas {
-			object-fit: contain;
+			/* object-fit: contain;
 			width: 90 dvw;
-			height: 90 dvh;
+			height: 90 dvh;*/
 			background-color: black;
+			touch-action: pinch-zoom;
 		}
 	</style>
 </head>

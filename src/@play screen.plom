@@ -30,6 +30,18 @@
  function . {is in grid pointer x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {boolean } } { } {
  return . {x } > . {grid corner x } and . {x } < . {grid corner x } + . {grid width } * . {grid size } and . {y } > . {grid corner y } and . {y } < . {grid corner y } + . {grid size } * . {grid height }
  }
+ function . {is pointer hit on packed item: { . {item } @ {backpack item } }x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {boolean } } { } {
+
+ var . {snap x } @ {number } := this . {pointer x to grid x: { . {x } } }
+ var . {snap y } @ {number } := this . {pointer y to grid y: { . {y } } }
+ if { . {snap x } >= . {item } . {x } and . {snap x } < . {item } . {x } + . {item } . {grid width } and . {snap y } >= . {item } . {y } and . {snap y } < . {item } . {y } + . {item } . {grid height } } {
+ return true
+ }
+ else {
+ return false
+ }
+
+ }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
  . {pointer x } := . {x }
  . {pointer y } := . {y }
@@ -51,6 +63,20 @@
  . {current item index } := . {current item index } - 1
  if { . {current item index } < 0 } {
  . {current item index } := . {items } . {size } - 1
+ }
+
+ }
+ if { . {y } < 300 } {
+ // See if we're dragging a placed/packed item
+ var . {n } @ {number } := 0
+ while { . {n } < . {items } . {size } } {
+ var . {item } @ {backpack item } := . {items } . {at: { . {n } } } as @ {backpack item }
+ if { . {item } . {is placed } and this . {is pointer hit on packed item: { . {item } }x: { . {x } }y: { . {y } } } } {
+ . {dragging item } := . {item }
+ . {item } . {unplace }
+ }
+
+ . {n } := . {n } + 1
  }
 
  }
