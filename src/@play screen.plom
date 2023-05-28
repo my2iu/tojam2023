@@ -11,12 +11,16 @@
  . {print: {"pointer up" + . {y } . {to string } } }
  }
  function . {run } { @ {void } } { } {
+
+ . {ctx } . {draw image: { . {background image } }x: { 0 }y: { 0 } }
+ . {ctx } . {draw image: { . {grid image } }x: { 0 }y: { 0 } }
  }
  function . {start } { @ {void } } { } {
- . {print: {"play start" } }
+ . {ctx } . {draw image: { . {loading image } }x: { 0 }y: { 0 } }
+
  . {background image } := @ {image } . {from: {"Suitcase.png" } }
  . {grid image } := @ {image } . {from: {"Grid.png" } }
-
+ . {start wait list } . {+=: { . {background image } . {load promise } } } . {+=: { . {grid image } . {load promise } } }
  }
  constructor . {new } { } {
  super . {new }
