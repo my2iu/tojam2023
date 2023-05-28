@@ -103,7 +103,11 @@
  if { . {dragging item } != null and this . {is in grid pointer x: { . {pointer x } }y: { . {pointer y } } } } {
  var . {snap x } @ {number } := this . {pointer x to grid x: { . {pointer x } - . {dragging item } . {grid width } / 2 * . {grid size } } }
  var . {snap y } @ {number } := this . {pointer y to grid y: { . {pointer y } - . {dragging item } . {grid height } / 2 * . {grid size } } }
+ if { . {snap x } >= 0 and . {snap y } >= 0 and . {snap x } + . {dragging item } . {grid width } <= . {grid width } and . {snap y } + . {dragging item } . {grid height } <= . {grid height } } {
  . {dragging item } . {place at x: { . {snap x } }y: { . {snap y } } }
+ }
+
+
  }
 
 

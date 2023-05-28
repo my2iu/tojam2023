@@ -20,6 +20,31 @@
 				img.onload = () => {resolve(img)};
 			});
 		}
+		function drawWrappedString(ctx, text, x, y, width) {
+			let lines = [];
+			let lineHeight = 0;
+			let paragraphs = text.split('\n');
+			for (let pidx = 0; pidx < paragraphs.length; pidx++ )
+			{
+				let words = lines.split(' ');
+				let line = "";
+				for (let widx = 0; widx < words.length; widx++)
+				{
+					let testline = line;
+					if (testline != "") testline += " ";
+					testline += words[widx];
+					let measure = measureText(testline);
+					lineHeight = Math.max(lineHeight, measure.fontBoundingBoxAscent + measure.fontBoundingBoxDescent);
+					if (measure.width > width) {
+						lines.push(line);
+						testline = words[widx];
+					}
+				}
+			}
+			for (let idx = 0; idx < lines.length; idx++) {
+				ctx.fillText(lines[idx], x, y + idx * lineHeight);
+			}
+		}
 	</script>
     <script type="text/javascript" language="javascript" src="main.plom.js"></script>
 	<script>
