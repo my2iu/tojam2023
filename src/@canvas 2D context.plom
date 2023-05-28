@@ -7,6 +7,9 @@
  function . {draw image: { . {image } @ {image } }x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
  . {js object } . {call: {"drawImage" }with: { . {image } . {unwrap } }and: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } } }
  }
+ function . {draw wrapped string: { . {text } @ {string } }x: { . {x } @ {number } }y: { . {y } @ {number } }width: { . {width } @ {number } } } { @ {void } } { } {
+ @ {JS object } . {globals } . {call: {"drawWrappedString" }with: { . {js object } }and: { @ {JS object } . {from string: { . {text } } } }and: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } }and: { @ {JS object } . {from number: { . {width } } } } }
+ }
  function . {fill rectangle at x: { . {x } @ {number } }y: { . {y } @ {number } }width: { . {width } @ {number } }height: { . {height } @ {number } } } { @ {void } } { } {
  . {js object } . {call: {"fillRect" }with: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } }and: { @ {JS object } . {from number: { . {width } } } }and: { @ {JS object } . {from number: { . {height } } } } }
  }

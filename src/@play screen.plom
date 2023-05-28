@@ -132,6 +132,12 @@
 
  if { . {current item index } < . {items } . {size } } {
  var . {current backpack item } @ {backpack item } := . {items } . {at: { . {current item index } } } as @ {backpack item }
+ if { . {current backpack item } . {description } != null } {
+ . {ctx } . {fill style: {"#6e5e09" } }
+ . {ctx } . {font: {"20px sans-serif" } }
+ . {ctx } . {draw wrapped string: { . {current backpack item } . {description } }x: { 80 }y: { 500 }width: { 320 } }
+ }
+
  if { . {current backpack item } != . {dragging item } } {
  . {image } := . {current backpack item } . {image }
  . {ctx } . {draw image: { . {image } }x: { 240 - . {image } . {width } / 2 }y: { 300 } }
@@ -200,7 +206,7 @@
  . {grid width } := 10
  . {grid height } := 7
  . {grid size } := 24
- . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } } } . {+=: { @ {backpack item } . {create } . {name: {"shield" } } . {image: { @ {image } . {from: {"Shield.png" } } } } } }
+ . {items } := @ {array } . {with: { @ {backpack item } . {create } . {name: {"sword" } } . {image: { @ {image } . {from: {"Sword.png" } } } } . {description: {"A long sword made of steel" } } } } . {+=: { @ {backpack item } . {create } . {name: {"shield" } } . {image: { @ {image } . {from: {"Shield.png" } } } } . {description: {"A strong shield" } } } }
 
  }
  }
