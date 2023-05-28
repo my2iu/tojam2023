@@ -23,4 +23,10 @@
  super . {new }
  . {native } := @ {JS object } . {globals } . {new: {"Array" } }
  }
+ classfunction . {with: { . {value } @ {object } } } { @ {array } } { } {
+ // Having trouble with instance methods after constructors in Plom, but I need that syntax, so I’m using a static method that does the same thing
+ var . {array } @ {array } := @ {array } . {new }
+ . {array } . {+=: { . {value } } }
+ return . {array }
+ }
  }

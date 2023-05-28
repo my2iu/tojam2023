@@ -4,6 +4,12 @@
  function . {2D context } { @ {canvas 2D context } } { } {
  return @ {canvas 2D context } . {force wrap: { . {js object } . {call: {"getContext" }with: {"2d" } } } }
  }
+ function . {height } { @ {number } } { } {
+ return . {js object } . {get: {"height" } } . {as number }
+ }
+ function . {width } { @ {number } } { } {
+ return . {js object } . {get: {"width" } } . {as number }
+ }
  constructor . {force wrap: { . {js } @ {JS object } } } { } {
  super . {force wrap: { . {js } } }
  }

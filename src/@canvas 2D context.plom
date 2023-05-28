@@ -1,8 +1,41 @@
  class @ { canvas 2D context } extends @ {wrapped js object } {
  vardecls {
  }
+ function . {clear rectangle at x: { . {x } @ {number } }y: { . {y } @ {number } }width: { . {width } @ {number } }height: { . {height } @ {number } } } { @ {void } } { } {
+ . {js object } . {call: {"clearRect" }with: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } }and: { @ {JS object } . {from number: { . {width } } } }and: { @ {JS object } . {from number: { . {height } } } } }
+ }
  function . {draw image: { . {image } @ {image } }x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
  . {js object } . {call: {"drawImage" }with: { . {image } . {unwrap } }and: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } } }
+ }
+ function . {fill rectangle at x: { . {x } @ {number } }y: { . {y } @ {number } }width: { . {width } @ {number } }height: { . {height } @ {number } } } { @ {void } } { } {
+ . {js object } . {call: {"fillRect" }with: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } }and: { @ {JS object } . {from number: { . {width } } } }and: { @ {JS object } . {from number: { . {height } } } } }
+ }
+ function . {fill style: { . {style } @ {string } } } { @ {void } } { } {
+ . {js object } . {set: {"fillStyle" }to: { @ {JS object } . {from string: { . {style } } } } }
+ }
+ function . {fill text: { . {text } @ {string } }x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {js object } . {call: {"fillText" }with: { @ {JS object } . {from string: { . {text } } } }and: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } } }
+ }
+ function . {font: { . {font } @ {string } } } { @ {void } } { } {
+ . {js object } . {set: {"font" }to: { @ {JS object } . {from string: { . {font } } } } }
+ }
+ function . {global alpha: { . {opacity } @ {string } } } { @ {void } } { } {
+ . {js object } . {set: {"globalAlpha" }to: { @ {JS object } . {from number: { . {opacity } } } } }
+ }
+ function . {line to x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {js object } . {call: {"lineTo" }with: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } } }
+ }
+ function . {move to x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
+ . {js object } . {call: {"moveTo" }with: { @ {JS object } . {from number: { . {x } } } }and: { @ {JS object } . {from number: { . {y } } } } }
+ }
+ function . {restore } { @ {void } } { } {
+ . {js object } . {call: {"restore" } }
+ }
+ function . {save } { @ {void } } { } {
+ . {js object } . {call: {"save" } }
+ }
+ function . {stroke style: { . {style } @ {string } } } { @ {void } } { } {
+ . {js object } . {set: {"strokeStyle" }to: { @ {JS object } . {from string: { . {style } } } } }
  }
  constructor . {force wrap: { . {js } @ {JS object } } } { } {
  super . {wrap: { . {js } } }
