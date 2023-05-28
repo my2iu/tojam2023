@@ -6,8 +6,8 @@
 
  }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
- var . {new screen } @ {play screen } := @ {play screen } . {new }
- . {game manager } . {switch to: { . {new screen } } }
+ this . {start intro screen }
+
 
  }
  function . {run } { @ {void } } { } {
@@ -21,6 +21,17 @@
 
 
 
+ }
+ function . {start intro screen } { @ {void } } { } {
+ var . {intro screen } @ {end screen } := @ {end screen } . {new }
+
+ var . {game } @ {play screen } := @ {play screen } . {new }
+
+ . {intro screen } . {next: { . {game } } } . {font: {"35px sans-serif" } } . {text: {"hello\n\nTap to continue" } }
+
+
+
+ . {game manager } . {switch to: { . {intro screen } } }
  }
  constructor . {new } { } {
  super . {new }

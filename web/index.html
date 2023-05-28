@@ -26,6 +26,10 @@
 			let paragraphs = text.split('\n');
 			for (let pidx = 0; pidx < paragraphs.length; pidx++ )
 			{
+			   if (paragraphs[pidx] == ""){
+			      lines.push("");
+			      continue;
+			   }
 				let words = paragraphs[pidx].split(' ');
 				let line = "";
 				for (let widx = 0; widx < words.length; widx++)

@@ -85,8 +85,7 @@
 
 
  if { . {y } > 750 } {
- var . {new screen } @ {end screen } := @ {end screen } . {new }
- . {game manager } . {switch to: { . {new screen } } }
+ this . {start epilogue }
  }
 
  }
@@ -195,6 +194,13 @@
  . {n } := . {n } + 1
  }
 
+ }
+ function . {start epilogue } { @ {void } } { } {
+ var . {return to title screen } @ {title screen } := @ {title screen } . {new }
+
+ var . {new screen } @ {end screen } := @ {end screen } . {new }
+ . {new screen } . {background image: {"Endscreen.jpg" } } . {text: {"The adventurer takes your gear and heads off for adventure." } } . {text y: { 150 } } . {next: { . {return to title screen } } }
+ . {game manager } . {switch to: { . {new screen } } }
  }
  constructor . {new } { } {
  super . {new }

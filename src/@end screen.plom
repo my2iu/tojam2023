@@ -1,21 +1,71 @@
  class @ { end screen } extends @ {game screen } {
  vardecls {
  var . {end image } @ {image }
+ var . {background image name } @ {string }
+ var . {text } @ {string }
+ var . {text y } @ {number }
+ var . {next screen } @ {game screen }
+ var . {font } @ {string }
+ }
+ function . {background image: { . {url } @ {string } } } { @ {end screen } } { } {
+ . {background image name } := . {url }
+ return this
+ }
+ function . {font: { . {style } @ {string } } } { @ {end screen } } { } {
+ . {font } := . {style }
+ return this
+ }
+ function . {next: { . {next } @ {game screen } } } { @ {end screen } } { } {
+ . {next screen } := . {next }
+ return this
  }
  function . {pointer down at x: { . {x } @ {number } }y: { . {y } @ {number } } } { @ {void } } { } {
- var . {new screen } @ {title screen } := @ {title screen } . {new }
- . {game manager } . {switch to: { . {new screen } } }
+ if { . {next screen } != null } {
+ . {game manager } . {switch to: { . {next screen } } }
+ }
+
+
  }
  function . {run } { @ {void } } { } {
+ if { . {end image } != null } {
  . {ctx } . {draw image: { . {end image } }x: { 0 }y: { 0 } }
+ }
+ else {
+ . {ctx } . {clear rectangle at x: { 0 }y: { 0 }width: { . {canvas } . {width } }height: { . {canvas } . {height } } }
+ }
+
+
+ if { . {text } != null } {
+ . {ctx } . {fill style: {"#6e5e09" } }
+ . {ctx } . {font: { . {font } } }
+ . {ctx } . {draw wrapped string: { . {text } }x: { 80 }y: { . {text y } }width: { 320 } }
+ }
+
  }
  function . {start } { @ {void } } { } {
  . {ctx } . {draw image: { . {loading image } }x: { 0 }y: { 0 } }
 
- . {end image } := @ {image } . {from: {"Endscreen.jpg" } }
+ if { . {background image name } != null } {
+ . {end image } := @ {image } . {from: { . {background image name } } }
  . {start wait list } . {+=: { . {end image } . {load promise } } }
+ }
+
+
+
+
+
+ }
+ function . {text y: { . {y } @ {number } } } { @ {end screen } } { } {
+ . {text y } := . {y }
+ return this
+ }
+ function . {text: { . {str } @ {string } } } { @ {end screen } } { } {
+ . {text } := . {str }
+ return this
  }
  constructor . {new } { } {
  super . {new }
+ . {text y } := 200
+ . {font } :="20px sans-serif"
  }
  }
