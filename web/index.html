@@ -38,7 +38,7 @@
 					if (testline != "") testline += " ";
 					testline += words[widx];
 					let measure = ctx.measureText(testline);
-					lineHeight = Math.max(lineHeight, measure.fontBoundingBoxAscent + measure.fontBoundingBoxDescent);
+					lineHeight = Math.max(lineHeight, measure.actualBoundingBoxAscent + measure.actualBoundingBoxDescent);
 					if (measure.width > width) {
 						lines.push(line);
 						testline = words[widx];
@@ -48,7 +48,7 @@
 				if (line != '') lines.push(line);
 			}
 			for (let idx = 0; idx < lines.length; idx++) {
-				ctx.fillText(lines[idx], x, y + idx * lineHeight);
+				ctx.fillText(lines[idx], x, y + idx * lineHeight * 1.2);
 			}
 		}
 	</script>
